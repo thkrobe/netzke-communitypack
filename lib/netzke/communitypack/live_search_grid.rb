@@ -28,6 +28,9 @@ class Netzke::Communitypack::LiveSearchGrid < ::Netzke::Basepack::Grid
         this.live_search_field = this.query('textfield[name="live_search_field"]')[0];
 
         // Add event listeners
+        if (!this.live_search_field) {
+          return;
+        }
         this.live_search_field.on('keydown', function() { this.onLiveSearch(); }, this, { buffer: 500 });
         this.live_search_field.on('blur', function() { this.onLiveSearch(); }, this, { buffer: 500 });
       }
